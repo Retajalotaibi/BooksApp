@@ -1,0 +1,24 @@
+PODS:
+  - Introspect (0.1.2)
+  - JWTDecode (2.5.0)
+  - lottie-ios (3.1.9)
+
+DEPENDENCIES:
+  - Introspect
+  - JWTDecode (~> 2.4)
+  - lottie-ios
+
+SPEC REPOS:
+  trunk:
+    - Introspect
+    - JWTDecode
+    - lottie-ios
+
+SPEC CHECKSUMS:
+  Introspect: 85a29d2c5ee4d3d15469ad0b75fd8839f3e72674
+  JWTDecode: d4c176a28a29f7e6f9abf5c90ad3002f69b98c7c
+  lottie-ios: 3a3758ef5a008e762faec9c9d50a39842f26d124
+
+PODFILE CHECKSUM: 3d74051afcd6a3e6ede94f41d3caa253ee661dc8
+
+COCOAPODS: 1.9.3

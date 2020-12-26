@@ -1,0 +1,6 @@
+module Pods_BooksGallery {
+  umbrella header "Pods-BooksGallery-umbrella.h"
+
+  export *
+  module * { export * }
+}
