@@ -9,12 +9,11 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject var authState: AuthHttpReq
     var body: some View {
-        Group{
-            if authState.authenticated || authState.getTheUserId(){
-                AppView()
-            }else{
-                AuthView()
-            }
+        if authState.authenticated || authState.isLoginIn()
+        {
+            AppView()
+        }else{
+            AuthView()
         }
     }
 }

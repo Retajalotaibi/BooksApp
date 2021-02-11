@@ -8,17 +8,6 @@
 import SwiftUI
 import Introspect
 
-enum AuthenticationType: String {
-    case login, signup
-    
-    var text: String {
-        switch self {
-        case .login: return "Login"
-        case .signup: return "Sign Up"
-        }
-    }
-}
-
 struct AuthView: View {
     @State var email = ""
     @State var password = ""
@@ -27,9 +16,9 @@ struct AuthView: View {
     @State var authType: AuthenticationType = .login
     var body: some View {
         VStack{
-            Text("Join our community of books lovers !").font(.system(size: 20)).fontWeight(.bold).padding([.top], 45)
+            Text("Join our community of books lovers !").font(.system(size: 20)).fontWeight(.bold).padding(.top, 45)
             LottieView(name: "login").padding().frame(width: 400, height: 225)
-            HStack{
+            HStack{ 
                 FormButton(Myindex: .login, currentIndex: self.$authType)
                 FormButton(Myindex: .signup, currentIndex: self.$authType)
             }.background(Color("blue-2").opacity(0.1))
@@ -100,9 +89,6 @@ struct Login: View{
             Text("Login")
                 .foregroundColor(.white).fontWeight(.bold).padding(.vertical, 10).frame(width: (UIScreen.main.bounds.width - 50) / 2)
         }).background(Color("blue-1")).clipShape(Capsule()).padding(.top, 40)
-//        if manager.authenticated{
-//            Text("YOOOOO WELCOME").font(.largeTitle).bold()
-//        }
     }
 }
 
@@ -111,7 +97,14 @@ struct SignIn: View{
     @Binding var number: String
     @Binding var email: String
     @Binding var password: String
-    
+    @EnvironmentObject var manager: AuthHttpReq
+    @State var formattedDate = ""
+    var dateFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd MMM YYYY"
+        return formatter
+    }
+    @State private var birthDate = Date()
     var body: some View{
         VStack{
             HStack(spacing: 15){
@@ -135,9 +128,9 @@ struct SignIn: View{
         .padding(.top, 20)
         VStack{
             HStack(spacing: 15){
-                Image(systemName: "phone.fill")
+                Image(systemName: "square.and.pencil")
                     .foregroundColor(.black)
-                TextField("Number", text: self.$number).modifier(toolBar())
+                DatePicker("your birthday",selection: $birthDate, in: ...Date(), displayedComponents: .date).foregroundColor(.secondary)
             }
             Divider().background(Color.white.opacity(0.5))
         }
@@ -153,7 +146,8 @@ struct SignIn: View{
         .padding(.horizontal)
         .padding(.top, 20)
         Button(action: {
-            
+            self.formattedDate = dateFormatter.string(from: birthDate)
+            manager.signUp(email: self.email, name: self.name, password: self.password, birthdate: self.formattedDate)
         }, label: {
             Text("Sign Up")
                 .foregroundColor(.white).fontWeight(.bold).padding(.vertical, 10).frame(width: (UIScreen.main.bounds.width - 50) / 2)

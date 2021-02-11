@@ -12,13 +12,13 @@ import JWTDecode
 
 enum authError: Error {
     case emailIsEmpty, passwordIsEmpty, ShortPassword, InvalidEmail,InvalidPassword
-    
 }
 
 class AuthHttpReq: ObservableObject {
     @Published var didChange = PassthroughSubject<AuthHttpReq, Never>()
     @Published var authenticated = false
     @Published var authError: String? = nil
+    @Published var user: User?
 
     func checkDetails(email: String, password: String){
         // my URL
@@ -45,18 +45,20 @@ class AuthHttpReq: ObservableObject {
            
             // :)
             if (statusCode == 400){
-                print("yo" ,responseString)
                 DispatchQueue.main.async {
                     authError = responseString
                 }
                 return
             }else{
                 DispatchQueue.main.async {
-                    print(responseString)
                     authError = nil
                     authenticated = true
                   UserDefaults.standard.set(responseString, forKey: "token")
-                    print("uaer Defaults", UserDefaults.standard.object(forKey: "token") as! String)
+                    let jwt = try? decode(jwt: responseString)
+                    if jwt != nil {
+                        let Id = jwt!.subject!
+                        UserDefaults.standard.set(Id, forKey: "userId")
+                    }
                 }
                 return
             }
@@ -65,16 +67,69 @@ class AuthHttpReq: ObservableObject {
         
     }
     
-    func getTheUserId() -> Bool {
-            let str = UserDefaults.standard.object(forKey: "token") as! String
-            let jwt = try? decode(jwt: str)
-            print("jwt", jwt)
-            return str.count > 0 ? true : false
+    // sign in function
+    func signUp(email: String, name: String, password: String, birthdate: String){
+        print("birthbay", birthdate)
+        guard let url = URL(string: "http://localhost:1000/user/createUser") else {return}
+        
+        let body:[String: String] = ["name": name, "email": email, "password": password, "birthdate": birthdate]
+        let finalBody = try! JSONSerialization.data(withJSONObject: body)
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.httpBody = finalBody
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        // my session
+        URLSession.shared.dataTask(with: request){ (data, response, error) in
+            
+            print("response", response)
+        }.resume()
+    }
+    
+    
+    func getTheUser()  {
+        if isLoginIn(){
+            // providing my URL with the token
+            let token = UserDefaults.standard.object(forKey: "token") as! String
+            guard let url = URL(string: "http://localhost:1000/user/me?authorization=\(token)") else {return}
+            
+            //my request
+            var request = URLRequest(url: url)
+            request.httpMethod = "GET"
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            
+            //my session
+            URLSession.shared.dataTask(with: request){ (data , response, error) in
+                guard let data = data else {return}
+                let statusCode = (response as! HTTPURLResponse).statusCode
+               print(response,"my res")
+                if statusCode == 404 {
+                    self.authError = "User Not Found "
+                    return
+                }
+                if statusCode == 401 {
+                    self.authError = "Access denied. No token provided."
+                    return
+                }
+                let decodedUser = try? JSONDecoder().decode(User.self, from: data)
+                print(decodedUser, "user")
+                if decodedUser != nil{
+                    DispatchQueue.main.async {
+                        self.user = decodedUser
+                    }
+                }else{
+                    self.authError = "User can not be decoded "
+                    return
+                }
+            }.resume()
+        }
     }
     
     func isLoginIn() -> Bool{
-        let str = UserDefaults.standard.object(forKey: "token") as! String
-        return str.count > 0 ? true : false
+        let str = UserDefaults.standard.object(forKey: "token") as? String
+        print(str == nil ? false : true)
+        return str == nil ? false : true
     }
 }
 

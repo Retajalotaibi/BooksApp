@@ -10,17 +10,22 @@
 		0208BCE4F8A0FD600BF39337 /* libPods-BooksGallery.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BD95D6DB9C49C94408FCD985 /* libPods-BooksGallery.a */; };
 		670326A5258B49DC0074B378 /* bookCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670326A4258B49DC0074B378 /* bookCategories.swift */; };
 		6761AE0A258A045B007A3284 /* LottiaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6761AE09258A045B007A3284 /* LottiaView.swift */; };
+		6762A9DB25B7ABB30077079B /* BookDetalisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6762A9DA25B7ABB30077079B /* BookDetalisView.swift */; };
 		677319D02596A1620067B8E9 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677319CF2596A1620067B8E9 /* AuthView.swift */; };
 		67888CE3258BB4C100428439 /* Pages in Frameworks */ = {isa = PBXBuildFile; productRef = 67888CE2258BB4C100428439 /* Pages */; };
 		67888CE6258BC9D000428439 /* login.json in Resources */ = {isa = PBXBuildFile; fileRef = 67888CE5258BC9D000428439 /* login.json */; };
 		67888CFD258BD2A100428439 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67888CFC258BD2A100428439 /* AppView.swift */; };
 		67888D00258CE84D00428439 /* BooksTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67888CFF258CE84D00428439 /* BooksTable.swift */; };
 		67888D03258D49F600428439 /* ProfilePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67888D02258D49F600428439 /* ProfilePageView.swift */; };
+		67BFDDF32598836300B0E6CB /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67BFDDF22598836300B0E6CB /* UserModel.swift */; };
+		67C9A46325B7584C00564818 /* bookModel .swift in Sources */ = {isa = PBXBuildFile; fileRef = 67C9A46225B7584C00564818 /* bookModel .swift */; };
 		67CBD767258A0CC1000B6A4F /* brahma-logo.json in Resources */ = {isa = PBXBuildFile; fileRef = 67CBD766258A0CC1000B6A4F /* brahma-logo.json */; };
 		67CBD76A258A78DB000B6A4F /* hideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CBD769258A78DB000B6A4F /* hideKeyboard.swift */; };
 		67CBD770258A79B1000B6A4F /* costomField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CBD76F258A79B1000B6A4F /* costomField.swift */; };
 		67CBD77C258A942E000B6A4F /* MainPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CBD77B258A942E000B6A4F /* MainPage.swift */; };
+		67D3F30825B8C4680090478F /* BooksRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D3F30725B8C4680090478F /* BooksRequest.swift */; };
 		67DE36BA259647F80094C421 /* AuthRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DE36B9259647F80094C421 /* AuthRequest.swift */; };
+		67E3901F25D2FED100297338 /* myenums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E3901E25D2FED000297338 /* myenums.swift */; };
 		67EB41532589FBDD00658BD4 /* BooksGalleryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EB41522589FBDD00658BD4 /* BooksGalleryApp.swift */; };
 		67EB41552589FBDD00658BD4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EB41542589FBDD00658BD4 /* ContentView.swift */; };
 		67EB41572589FBDE00658BD4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67EB41562589FBDE00658BD4 /* Assets.xcassets */; };
@@ -32,16 +37,21 @@
 		52E53EC13D9A7356BF33FF26 /* Pods-BooksGallery.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BooksGallery.debug.xcconfig"; path = "Target Support Files/Pods-BooksGallery/Pods-BooksGallery.debug.xcconfig"; sourceTree = "<group>"; };
 		670326A4258B49DC0074B378 /* bookCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bookCategories.swift; sourceTree = "<group>"; };
 		6761AE09258A045B007A3284 /* LottiaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottiaView.swift; sourceTree = "<group>"; };
+		6762A9DA25B7ABB30077079B /* BookDetalisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetalisView.swift; sourceTree = "<group>"; };
 		677319CF2596A1620067B8E9 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		67888CE5258BC9D000428439 /* login.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = login.json; sourceTree = "<group>"; };
 		67888CFC258BD2A100428439 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		67888CFF258CE84D00428439 /* BooksTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksTable.swift; sourceTree = "<group>"; };
 		67888D02258D49F600428439 /* ProfilePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePageView.swift; sourceTree = "<group>"; };
+		67BFDDF22598836300B0E6CB /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		67C9A46225B7584C00564818 /* bookModel .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "bookModel .swift"; sourceTree = "<group>"; };
 		67CBD766258A0CC1000B6A4F /* brahma-logo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "brahma-logo.json"; sourceTree = "<group>"; };
 		67CBD769258A78DB000B6A4F /* hideKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hideKeyboard.swift; sourceTree = "<group>"; };
 		67CBD76F258A79B1000B6A4F /* costomField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = costomField.swift; sourceTree = "<group>"; };
 		67CBD77B258A942E000B6A4F /* MainPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPage.swift; sourceTree = "<group>"; };
+		67D3F30725B8C4680090478F /* BooksRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksRequest.swift; sourceTree = "<group>"; };
 		67DE36B9259647F80094C421 /* AuthRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRequest.swift; sourceTree = "<group>"; };
+		67E3901E25D2FED000297338 /* myenums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myenums.swift; sourceTree = "<group>"; };
 		67EB414F2589FBDD00658BD4 /* BooksGallery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BooksGallery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		67EB41522589FBDD00658BD4 /* BooksGalleryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksGalleryApp.swift; sourceTree = "<group>"; };
 		67EB41542589FBDD00658BD4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -70,6 +80,8 @@
 			isa = PBXGroup;
 			children = (
 				670326A4258B49DC0074B378 /* bookCategories.swift */,
+				67C9A46225B7584C00564818 /* bookModel .swift */,
+				67BFDDF22598836300B0E6CB /* UserModel.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -80,6 +92,7 @@
 				6761AE09258A045B007A3284 /* LottiaView.swift */,
 				67CBD769258A78DB000B6A4F /* hideKeyboard.swift */,
 				67CBD76F258A79B1000B6A4F /* costomField.swift */,
+				67E3901E25D2FED000297338 /* myenums.swift */,
 			);
 			path = helpers;
 			sourceTree = "<group>";
@@ -93,6 +106,7 @@
 				67888CFF258CE84D00428439 /* BooksTable.swift */,
 				67888D02258D49F600428439 /* ProfilePageView.swift */,
 				677319CF2596A1620067B8E9 /* AuthView.swift */,
+				6762A9DA25B7ABB30077079B /* BookDetalisView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -101,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				67DE36B9259647F80094C421 /* AuthRequest.swift */,
+				67D3F30725B8C4680090478F /* BooksRequest.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -279,13 +294,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				67CBD770258A79B1000B6A4F /* costomField.swift in Sources */,
+				67C9A46325B7584C00564818 /* bookModel .swift in Sources */,
 				67DE36BA259647F80094C421 /* AuthRequest.swift in Sources */,
 				677319D02596A1620067B8E9 /* AuthView.swift in Sources */,
+				67D3F30825B8C4680090478F /* BooksRequest.swift in Sources */,
 				67888D03258D49F600428439 /* ProfilePageView.swift in Sources */,
+				6762A9DB25B7ABB30077079B /* BookDetalisView.swift in Sources */,
 				67CBD76A258A78DB000B6A4F /* hideKeyboard.swift in Sources */,
+				67BFDDF32598836300B0E6CB /* UserModel.swift in Sources */,
 				670326A5258B49DC0074B378 /* bookCategories.swift in Sources */,
 				67EB41552589FBDD00658BD4 /* ContentView.swift in Sources */,
 				67888CFD258BD2A100428439 /* AppView.swift in Sources */,
+				67E3901F25D2FED100297338 /* myenums.swift in Sources */,
 				67EB41532589FBDD00658BD4 /* BooksGalleryApp.swift in Sources */,
 				6761AE0A258A045B007A3284 /* LottiaView.swift in Sources */,
 				67CBD77C258A942E000B6A4F /* MainPage.swift in Sources */,

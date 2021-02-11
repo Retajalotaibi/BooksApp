@@ -9,62 +9,35 @@ import SwiftUI
 import Pages
 
 struct MainPage: View {
+    @EnvironmentObject var authState: AuthHttpReq
     @State var currentPage = 0
     var body: some View {
         NavigationView{
-            VStack() {
-                Pages(currentPage: self.$currentPage,hasControl: false ,pages: { () -> [AnyView] in
-                    NavigationLink(
-                        destination: BooksTable(title: Categories[0].categor),
-                        label: {
-                            CategoryView(category: Categories[0])
-                        })
-                    NavigationLink(
-                        destination: BooksTable(title: Categories[1].categor),
-                        label: {
-                            CategoryView(category: Categories[1])
-                        })
-                    NavigationLink(
-                        destination: BooksTable(title: Categories[2].categor),
-                        label: {
-                            CategoryView(category: Categories[2])
-                        })
-                    NavigationLink(
-                        destination: BooksTable(title: Categories[3].categor),
-                        label: {
-                            CategoryView(category: Categories[3])
-                        })
-                    NavigationLink(
-                        destination: BooksTable(title: Categories[4].categor),
-                        label: {
-                            CategoryView(category: Categories[4])
-                        })
-                    NavigationLink(
-                        destination: BooksTable(title: Categories[5].categor),
-                        label: {
-                            CategoryView(category: Categories[5])
-                        })
-                    
-                  /*  ForEach(Categories) { category in
-                        NavigationLink(
-                            destination: BooksTable(title: category.categor),
-                            label: {
-                                CategoryView(category: category)
-                            })
-                    }*/
-                    
-                }).frame(height: 150)
+            VStack{
+                ScrollView(.horizontal){
+                    HStack{
+                        ForEach(books, id: \.self) { (book) in
+                            NavigationLink(
+                                destination: BookDetalisView(),
+                                label: {
+                                    VStack{
+                                        Image(book.bookImage).resizable().scaledToFit().frame(height: 270).cornerRadius(10)
+                                        Text(book.bookName).bold()
+                                    }.padding()
+                                }).foregroundColor(.black)
+                        }
+                    }
+                }
                 Spacer()
-                BooksTable(title: "Popular Books")
-            }.navigationTitle("Categories")
-        }
+            }.navigationTitle("Discover")
+        }.accentColor(.white)
     }
 }
 
 
 struct MainPage_Previews: PreviewProvider {
     static var previews: some View {
-        MainPage()
+        MainPage().environmentObject(AuthHttpReq())
     }
 }
 struct CategoryView: View {
@@ -80,3 +53,46 @@ struct CategoryView: View {
         }
     }
 }
+
+/*
+ Pages(currentPage: self.$currentPage,hasControl: false ,pages: { () -> [AnyView] in
+     NavigationLink(
+         destination: BooksTable(title: Categories[0].categor),
+         label: {
+             CategoryView(category: Categories[0])
+         })
+     NavigationLink(
+         destination: BooksTable(title: Categories[1].categor),
+         label: {
+             CategoryView(category: Categories[1])
+         })
+     NavigationLink(
+         destination: BooksTable(title: Categories[2].categor),
+         label: {
+             CategoryView(category: Categories[2])
+         })
+     NavigationLink(
+         destination: BooksTable(title: Categories[3].categor),
+         label: {
+             CategoryView(category: Categories[3])
+         })
+     NavigationLink(
+         destination: BooksTable(title: Categories[4].categor),
+         label: {
+             CategoryView(category: Categories[4])
+         })
+     NavigationLink(
+         destination: BooksTable(title: Categories[5].categor),
+         label: {
+             CategoryView(category: Categories[5])
+         })
+   /*  ForEach(Categories) { category in
+         NavigationLink(
+             destination: BooksTable(title: category.categor),
+             label: {
+                 CategoryView(category: category)
+             })
+     }*/
+ }).frame(height: 150)
+
+ */
