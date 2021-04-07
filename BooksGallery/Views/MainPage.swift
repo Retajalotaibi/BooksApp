@@ -7,22 +7,27 @@
 
 import SwiftUI
 import Pages
-
+import SDWebImageSwiftUI
 struct MainPage: View {
-    @EnvironmentObject var authState: AuthHttpReq
+    @EnvironmentObject var bookReq: BooksRequest
     @State var currentPage = 0
     var body: some View {
         NavigationView{
             VStack{
                 ScrollView(.horizontal){
                     HStack{
-                        ForEach(books, id: \.self) { (book) in
+                        ForEach(bookReq.books, id: \.self) { (book) in
+                            let imageurl = URL(string: book.bookImage)
                             NavigationLink(
-                                destination: BookDetalisView(),
+                                destination: BookDetalisView(book: book, reviews: book.reviews, imageURL: imageurl)
+                                    .navigationBarItems(trailing: Button(action: {
+                                        
+                                    }, label: {
+                                        Image(systemName: "star").foregroundColor(.white)
+                                    })),
                                 label: {
                                     VStack{
-                                        Image(book.bookImage).resizable().scaledToFit().frame(height: 270).cornerRadius(10)
-                                        Text(book.bookName).bold()
+                                        WebImage(url: imageurl).resizable().scaledToFit().frame(height: 230).cornerRadius(10)
                                     }.padding()
                                 }).foregroundColor(.black)
                         }
@@ -30,14 +35,17 @@ struct MainPage: View {
                 }
                 Spacer()
             }.navigationTitle("Discover")
-        }.accentColor(.white)
+            
+        }.navigationViewStyle(StackNavigationViewStyle()).accentColor(.white).onAppear {
+              bookReq.getAllBooks()
+        }
     }
 }
-
+//
 
 struct MainPage_Previews: PreviewProvider {
     static var previews: some View {
-        MainPage().environmentObject(AuthHttpReq())
+        MainPage().environmentObject(BooksRequest())
     }
 }
 struct CategoryView: View {
@@ -53,46 +61,3 @@ struct CategoryView: View {
         }
     }
 }
-
-/*
- Pages(currentPage: self.$currentPage,hasControl: false ,pages: { () -> [AnyView] in
-     NavigationLink(
-         destination: BooksTable(title: Categories[0].categor),
-         label: {
-             CategoryView(category: Categories[0])
-         })
-     NavigationLink(
-         destination: BooksTable(title: Categories[1].categor),
-         label: {
-             CategoryView(category: Categories[1])
-         })
-     NavigationLink(
-         destination: BooksTable(title: Categories[2].categor),
-         label: {
-             CategoryView(category: Categories[2])
-         })
-     NavigationLink(
-         destination: BooksTable(title: Categories[3].categor),
-         label: {
-             CategoryView(category: Categories[3])
-         })
-     NavigationLink(
-         destination: BooksTable(title: Categories[4].categor),
-         label: {
-             CategoryView(category: Categories[4])
-         })
-     NavigationLink(
-         destination: BooksTable(title: Categories[5].categor),
-         label: {
-             CategoryView(category: Categories[5])
-         })
-   /*  ForEach(Categories) { category in
-         NavigationLink(
-             destination: BooksTable(title: category.categor),
-             label: {
-                 CategoryView(category: category)
-             })
-     }*/
- }).frame(height: 150)
-
- */

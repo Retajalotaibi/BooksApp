@@ -11,6 +11,8 @@
 		670326A5258B49DC0074B378 /* bookCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670326A4258B49DC0074B378 /* bookCategories.swift */; };
 		6761AE0A258A045B007A3284 /* LottiaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6761AE09258A045B007A3284 /* LottiaView.swift */; };
 		6762A9DB25B7ABB30077079B /* BookDetalisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6762A9DA25B7ABB30077079B /* BookDetalisView.swift */; };
+		6772A1AA25DA0571004A4911 /* webImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6772A1A925DA0571004A4911 /* webImage.swift */; };
+		6772A1B325DA08E4004A4911 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 6772A1B225DA08E4004A4911 /* SDWebImageSwiftUI */; };
 		677319D02596A1620067B8E9 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677319CF2596A1620067B8E9 /* AuthView.swift */; };
 		67888CE3258BB4C100428439 /* Pages in Frameworks */ = {isa = PBXBuildFile; productRef = 67888CE2258BB4C100428439 /* Pages */; };
 		67888CE6258BC9D000428439 /* login.json in Resources */ = {isa = PBXBuildFile; fileRef = 67888CE5258BC9D000428439 /* login.json */; };
@@ -38,6 +40,7 @@
 		670326A4258B49DC0074B378 /* bookCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bookCategories.swift; sourceTree = "<group>"; };
 		6761AE09258A045B007A3284 /* LottiaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottiaView.swift; sourceTree = "<group>"; };
 		6762A9DA25B7ABB30077079B /* BookDetalisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetalisView.swift; sourceTree = "<group>"; };
+		6772A1A925DA0571004A4911 /* webImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = webImage.swift; sourceTree = "<group>"; };
 		677319CF2596A1620067B8E9 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		67888CE5258BC9D000428439 /* login.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = login.json; sourceTree = "<group>"; };
 		67888CFC258BD2A100428439 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
@@ -68,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6772A1B325DA08E4004A4911 /* SDWebImageSwiftUI in Frameworks */,
 				0208BCE4F8A0FD600BF39337 /* libPods-BooksGallery.a in Frameworks */,
 				67888CE3258BB4C100428439 /* Pages in Frameworks */,
 			);
@@ -93,6 +97,7 @@
 				67CBD769258A78DB000B6A4F /* hideKeyboard.swift */,
 				67CBD76F258A79B1000B6A4F /* costomField.swift */,
 				67E3901E25D2FED000297338 /* myenums.swift */,
+				6772A1A925DA0571004A4911 /* webImage.swift */,
 			);
 			path = helpers;
 			sourceTree = "<group>";
@@ -208,6 +213,7 @@
 			name = BooksGallery;
 			packageProductDependencies = (
 				67888CE2258BB4C100428439 /* Pages */,
+				6772A1B225DA08E4004A4911 /* SDWebImageSwiftUI */,
 			);
 			productName = BooksGallery;
 			productReference = 67EB414F2589FBDD00658BD4 /* BooksGallery.app */;
@@ -238,6 +244,7 @@
 			mainGroup = 67EB41462589FBDD00658BD4;
 			packageReferences = (
 				67888CE1258BB4C100428439 /* XCRemoteSwiftPackageReference "Pages" */,
+				6772A1B125DA08E4004A4911 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
 			productRefGroup = 67EB41502589FBDD00658BD4 /* Products */;
 			projectDirPath = "";
@@ -303,6 +310,7 @@
 				67CBD76A258A78DB000B6A4F /* hideKeyboard.swift in Sources */,
 				67BFDDF32598836300B0E6CB /* UserModel.swift in Sources */,
 				670326A5258B49DC0074B378 /* bookCategories.swift in Sources */,
+				6772A1AA25DA0571004A4911 /* webImage.swift in Sources */,
 				67EB41552589FBDD00658BD4 /* ContentView.swift in Sources */,
 				67888CFD258BD2A100428439 /* AppView.swift in Sources */,
 				67E3901F25D2FED100297338 /* myenums.swift in Sources */,
@@ -502,6 +510,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		6772A1B125DA08E4004A4911 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.0;
+			};
+		};
 		67888CE1258BB4C100428439 /* XCRemoteSwiftPackageReference "Pages" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/nachonavarro/Pages";
@@ -513,6 +529,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		6772A1B225DA08E4004A4911 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6772A1B125DA08E4004A4911 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
 		67888CE2258BB4C100428439 /* Pages */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 67888CE1258BB4C100428439 /* XCRemoteSwiftPackageReference "Pages" */;

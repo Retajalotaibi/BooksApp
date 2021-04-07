@@ -20,7 +20,7 @@ class AuthHttpReq: ObservableObject {
     @Published var authError: String? = nil
     @Published var user: User?
 
-    func checkDetails(email: String, password: String){
+    func loginToApi(email: String, password: String){
         // my URL
         guard let url = URL(string: "http://localhost:1000/user/login") else {return}
         
@@ -44,7 +44,7 @@ class AuthHttpReq: ObservableObject {
             let responseString = String(data: data, encoding: .utf8)!
            
             // :)
-            if (statusCode == 400){
+            if statusCode == 400{
                 DispatchQueue.main.async {
                     authError = responseString
                 }
@@ -82,8 +82,30 @@ class AuthHttpReq: ObservableObject {
         
         // my session
         URLSession.shared.dataTask(with: request){ (data, response, error) in
-            
-            print("response", response)
+
+            guard let data = data else {return}
+            let statusCode = (response as! HTTPURLResponse).statusCode
+            if statusCode == 400 {
+                DispatchQueue.main.async {
+                    self.authError = String(data: data, encoding: .utf8)!
+                }
+                return
+            }
+            if statusCode == 200 {
+                let decodedUser = try? JSONDecoder().decode(User.self, from: data)
+                
+                if decodedUser != nil {
+                    DispatchQueue.main.async {
+                        self.user = decodedUser
+                        self.authenticated = true
+                    }
+                }else {
+                        self.authError = "could decode the user"
+                        return
+
+                }
+            }
+
         }.resume()
     }
     
@@ -103,7 +125,6 @@ class AuthHttpReq: ObservableObject {
             URLSession.shared.dataTask(with: request){ (data , response, error) in
                 guard let data = data else {return}
                 let statusCode = (response as! HTTPURLResponse).statusCode
-               print(response,"my res")
                 if statusCode == 404 {
                     self.authError = "User Not Found "
                     return
@@ -113,7 +134,6 @@ class AuthHttpReq: ObservableObject {
                     return
                 }
                 let decodedUser = try? JSONDecoder().decode(User.self, from: data)
-                print(decodedUser, "user")
                 if decodedUser != nil{
                     DispatchQueue.main.async {
                         self.user = decodedUser
@@ -128,7 +148,6 @@ class AuthHttpReq: ObservableObject {
     
     func isLoginIn() -> Bool{
         let str = UserDefaults.standard.object(forKey: "token") as? String
-        print(str == nil ? false : true)
         return str == nil ? false : true
     }
 }

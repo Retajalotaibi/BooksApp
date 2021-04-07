@@ -73,6 +73,11 @@ struct ProfileView: View{
             Text("Name\t\t\(env.user?.name ?? "")")
             Text("Birthday\t\t\(env.user?.birthdate ?? "")")
             Text("email\t\t\(env.user?.email ?? "")")
+            Button(action: {
+                print("loged out")
+            }, label: {
+                Text("logout").foregroundColor(.red)
+            })
         }
     }
 }

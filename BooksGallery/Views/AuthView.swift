@@ -84,7 +84,7 @@ struct Login: View{
             Text(manager.authError!).font(.subheadline).frame(width: 400,alignment: .leading).foregroundColor(.red).padding(6)
         }
         Button(action: {
-        manager.checkDetails(email: self.email, password: self.password)
+        manager.loginToApi(email: self.email, password: self.password)
         }, label: {
             Text("Login")
                 .foregroundColor(.white).fontWeight(.bold).padding(.vertical, 10).frame(width: (UIScreen.main.bounds.width - 50) / 2)

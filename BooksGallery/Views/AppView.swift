@@ -16,22 +16,10 @@ struct AppView: View {
             if index == 0 {
                 ProfilePageView()
             }else{
-                MainPage()
+                MainPage().environmentObject(BooksRequest())
             }
             customTapBar(index: $index)
-            //        TabView{
-            //            ProfilePageView().tabItem{
-            //                Image(systemName: "person.crop.circle.fill")
-            //                Text("profile")
-            //            }
-            //
-            //            MainPage().tabItem{
-            //                Image(systemName: "books.vertical.fill")
-            //                Text("Books")
-            //            }
-            
-            //        }
-        }//.background(Color.gray)
+        }
     }
 }
 
@@ -59,13 +47,13 @@ struct customTapBar: View {
                     Button(action: {
                         index = 0
                     }, label: {
-                        Image(systemName: "person.crop.circle.fill").foregroundColor(index == 0 ? .black : .gray)
+                        Image(systemName: "person.crop.circle.fill").foregroundColor(index == 0 ? .black : .gray)//.font(.system(size: 23))
                     })
                     Spacer(minLength: 15)
                     Button(action: {
                         index = 1
                     }, label: {
-                        Image(systemName: "books.vertical.fill").foregroundColor(index == 1 ? .black : .gray)
+                        Image(systemName: "books.vertical.fill").foregroundColor(index == 1 ? .black : .gray)//.font(.system(size: 23))
                     })
                 }
                 
